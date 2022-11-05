@@ -1,0 +1,74 @@
+create table employee
+(
+empno number(4) primary key,
+ename varchar(10),
+job varchar(6),
+sal number(5),
+deptno number(7),
+address varchar(100)
+);
+
+
+insert into employee values(1,'arkit','devel',28000,01,'thane');
+
+
+insert into employee values(2,'vinay','develo',20000,01,'dombivali');
+
+
+insert into employee values(3,'suraj','assdev',15000,02,'ulhasnagar');
+
+insert into employee values(4,'wdk','assmng',25000,04,'anand nagar');
+
+insert into employee values(5,'hurae','intern',10000,03,'borivali');
+
+insert into employee values(6,'Nathuram','intern',10000,05);
+
+
+
+
+alter table employee drop column address;
+
+desc employee;
+
+
+select * from employee;
+
+
+select * from employee where sal IN(10000,15000);
+
+
+select * from employee where ename like 'N%';
+
+
+
+
+==================================================================================
+
+create table owner
+(
+
+oname varchar(10),
+
+address varchar(100),
+phone number(20),
+area varchar(200)
+);
+
+
+
+insert into owner values('mr.nene','123 dombivali ',258963147,'pune');
+
+insert into owner values('mr.vishen','26/22 kasaounder ',258963147,'belthara road');
+
+insert into owner values('mr.vishen','vighnaharta apt ',258963147,'kalher');
+
+insert into owner values('mr.nene','123 dombivali ',258963147,'pune');
+
+insert into owner values('mr.joshi','123 dombivali ',258963147,'pune');
+
+insert into owner values('mr.patel','hernve ',216565,'nagara');
+
+
+update owner set phone=9890278008 where oname='mr.nene';
+
+delete from owner where area='pune' and oname='mr.joshi';

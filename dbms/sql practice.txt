@@ -1,0 +1,635 @@
+
+Q1
+Ans
+create table employee
+(
+empno number(4) primary key,
+ename varchar(10),
+job varchar(6),
+sal number(5),
+deptno number(7)
+);
+
+
+desc employee;
+
+
+insert into employee values(1,'arkit','devel',28000,01);
+
+
+insert into employee values(2,'vinay','develo',20000,01);
+
+
+insert into employee values(3,'suraj','assdev',15000,02);
+
+
+insert into employee(ename,job) values('dave','fact');
+
+
+insert into employee(empno,ename,job) values (4,'gajendra','intern');
+
+
+select * from employee;
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+Q2
+Ans:-
+
+
+
+
+create table employee2
+(
+empno number(4) ,
+ename varchar(10),
+job varchar(6),
+sal number(5),
+deptno number(7),
+primary key(empno,ename)
+);
+
+
+
+insert into employee values(1,'arkit','devel',28000,01);
+
+
+insert into employee values(2,'vinay','develo',20000,01);
+
+
+insert into employee values(3,'suraj','assdev',15000,02);
+
+
+insert into employee(empno,ename,job) values (4,'gajendra','intern');
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+create table employee2
+(
+empno number(4) ,
+ename varchar(10),
+job varchar(6),
+sal number(5),
+deptno number(7),
+primary key(empno,ename)
+);
+
+
+
+insert into employee2 values(1,'arkit','devel',28000,01);
+
+
+insert into employee2 values(2,'vinay','develo',20000,01);
+
+
+insert into employee2 values(3,'suraj','assdev',15000,02);
+
+
+insert into employee2 values(3,'suraj','assdev',15000,02);
+
+insert into employee2 (empno,ename,job) values (4,'gajendra','intern');
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q4 
+Ans
+
+create table employee3
+(
+empno number(4) ,
+ename varchar(10),
+job varchar(6),
+sal number(5),
+deptno number(7)
+);
+
+
+alter table employee3
+add primary key(empno);
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Q5 
+Ans:-
+
+
+
+create table dept
+(
+deptno number(2) primary key,
+dname varchar(20),
+location varchar2(15)
+);
+
+
+create  table employee4
+(
+empno number(3),
+dno number(2) REFERENCES dept(deptno),
+design varchar2(10)
+);
+
+
+
+insert into dept values (1,'accoun','thane');
+
+insert into dept values (2,'mgmt','klyn');
+
+insert into dept values (3,'IT','borivali');
+
+
+select * from dept;
+
+
+
+insert into emp4 values (1,2,'manager');
+
+insert into emp4 values (1,2,'manager');
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+#Q6  write a  query to create foreign key constraints
+
+
+
+
+
+
+
+create table dept1
+(
+deptno number(2),
+dname varchar2(20),
+location varchar2(15),
+primary key(deptno,dname)
+);
+
+
+
+
+create table emp5
+(
+empno number(3),
+ deptno number(2),
+ dname varchar(40),
+ design varchar(40),
+ foreign key(deptno,dname) REFERENCES dept1(deptno,dname)
+
+
+
+);
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q7 
+
+
+
+
+
+create table emp6
+(
+empno number(3),
+deptno number(2),
+design varchar2(10)
+);
+
+
+
+alter table emp6 add
+foreign key(deptno)REFERENCES dept(deptno);
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+
+CHECK CONSTRAINTS
+
+
+
+
+Q7 create a table to create Check constraints with column level
+
+
+
+create table emp7
+(
+
+empno number(3),
+ename varchar2(20),
+design varchar2(15),
+sal number(5),
+check(sal>500 and sal<10000),
+deptno number(2)
+);
+
+
+insert into emp7 values(1,'gafsg','hgfuehh',10000,2);
+
+insert into emp7 values(1,'gafsg','hgfuehh',15000,2);
+
+insert into emp7 values(1,'gafsg','hgfuehh',15000,2);
+
+
+
+
+******************************************************************************
+
+Q8 create a table to create Check constraints using alter command.
+
+create table emp8
+(
+empno number(3),
+ename varchar2(20),
+design varchar2(15),
+sal number(5)
+);
+
+
+alter table emp8 add
+check (sal>500 and sal <10001);
+
+
+
+
+
+insert into emp8 values(1,'gafsg','hgfuehh',10008);
+
+insert into emp8 values(1,'gafsg','hgfuehh',1500);
+
+insert into emp8 values(1,'gafsg','hgfuehh',200);
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Q9 write a query to create unique constraints with column level
+
+
+create table emp10
+(
+empno number(3),
+ename varchar2(20),
+design varchar2(15) UNIQUE,
+sal number(5)
+);
+
+
+
+
+insert into emp10 values(1,'gafsg','hgfuehh',10008);
+
+insert into emp10 values(1,'gafsg','hgfuehh',1500);
+
+insert into emp10 values(1,'gafsg','hgfuhh',200);
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+table level UNIQUE constraints
+
+create table emp11
+(
+empno number(3),
+ename varchar2(20),
+design varchar2(15),
+sal number(5),
+UNIQUE(design,sal)
+);
+
+
+
+
+insert into emp11 values(1,'gafsg','hgfuehh',10008);
+
+
+
+insert into emp11 values(1,'gafsg','hgfuehh',10008);
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Q11   write a query to create unique constraints with table level using alter command
+
+
+
+create table emp12
+(
+empno number(3),
+ename varchar2(20),
+design varchar2(15) ,
+sal number(5)
+);
+
+
+
+
+alter table emp12 add
+UNIQUE(design,sal);
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+
+NOT NULL
+
+create table emp13
+(
+empno number(3) ,
+ename varchar2(20) NOT NULL,
+design varchar2(15) ,
+sal number(5)
+);
+
+
+drop table emp13;
+
+insert into emp13 values(1,'','hgfuehh',10008);
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+ create table emp14
+(
+empno number(3) ,
+ename varchar2(20) ,
+design varchar2(15) ,
+sal number(5)
+);
+
+
+
+alter table emp14 modify ename varchar(100) NOT NULL;
+
+
+hlo
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+MANPULATING DATA
+
+
+
+create table student
+(
+sid int,
+sname varchar(100),
+branch varchar (50),
+marks int
+);
+
+
+INSERT
+
+
+inserting  single record using the values keyword
+
+
+
+
+insert into student values(1,'namita','IT',70);
+
+insert into student values(2,'amey','BBA',50);
+
+insert into student values(3,'shweta','Bcom',80);
+
+insert into student values(4,'rohit','IT',75);
+
+insert into student values(5,'siddhesh','IT',60);
+
+
+
+---------------------------------------------------
+
+insert a single record for selective column
+
+insert into student (sid,sname) values (6,'harsh');
+
+insert into student (sid,sname) values (7,'gauri');
+
+
+----------------------------------------
+
+
+
+
+
+
+
+
+DELETE
+
+
+to delete all values
+Q1 write a query to delete all the values from student.
+ 
+ 
+ delete from student;
+
+
+
+to delete a selective value
+
+Q2 write a query to delete student records whose sid is 5 and marks is 60
+
+
+delete from student where sid=5 and marks=60;
+
+
+
+
+SELECT 
+
+to select data from selective column
+
+
+Q1  write a query to fetch student id and name of student
+
+
+select sid,sname from student ;
+
+
+Q2  write a query to select student id ,name and marks whose marks is 60.
+
+
+select sid,sname,marks from student where marks=60;
+
+
+
+Q3 write a query to fetch the name marks and branch of a stucent whose name is namita.
+
+
+select sname,marks,branch from student where sname='namita';
+
+
+
+
+Q4  write a query to fetch the faculty data whose department id is 2.
+
+create table faculty
+(
+fid number(4),
+fname varchar2(100),
+qualification varchar2(150),
+deptno number(5)
+);
+
+
+
+insert into faculty values (1,'akshara','mca',01);
+
+insert into faculty values (2,'saugat','mca',01);
+
+insert into faculty values (3,'nirmiti','msc-it',02);
+
+insert into faculty values (4,'rupali','mca',02);
+
+insert into faculty values (5,'saarika','mca',02);
+
+insert into faculty values (5,'deepa','B-Tech',02);
+
+insert into faculty values (7,'deepam','B-Tech',01);
+
+
+ans:-   
+
+
+select * from faculty where deptno=02;
+
+
+
+Q5  write a query to fetch details of fcaulty whose qualification is B-Tech.
+
+
+select * from faculty where qualification='B-Tech';
+
+
+
+Q6 write aquery to fetch fid and fname of faculties whose qulaification is B-Tech and deptno is 1.
+
+
+select fname,fid from faculty where qualification ='B-Tech' and deptno =1;
+
+
+Q7  write query to fetch all details   of faculties whose qulaification is B-Tech and deptno is 1.
+
+
+select * from faculty where qualification ='B-Tech' and deptno =1;
+
+
+
+Q8    write a query  to fetch student details whose marks are greater than or equl to 75.
+
+
+select * from student where marks >=75;
+
+
+
+Q9  write a query  to fetch student details whose branch is it and bba.
+
+
+select * from student where  branch ='IT' or branch ='BBA';
+
+
+Q10 write a query  to fetch student details whose marks is either 50,75,80.
+
+select * from student where marks IN (50,75,80);
+
+
+
+Q11 write a query to find students who is not in bba
+
+
+select * from student where branch !='BBA';
+
+
+Q12 find names of students whose is from IT and have more than 50 marks.
+
+
+select sname from student where branch='IT' and marks>=50;
+
+
+Q13 find names of student whose is from BCom or have more than 50 marks.
+
+
+select sname from student where branch = 'Bcom' or marks >50;
+
+
+Q14 find faculty name who are from, department 1 0r 3.
+
+select * from faculty where deptno= 1 or deptno =3;
+
+
+
+Q15  find faculty details having either of the following qualification b.tech ,phd
+
+
+select * from faculty where qualification IN('B-Tech','Phd');
+
+
+
+Q16  find student details who are not from IT and bcom branch.
+
+
+select * from student where branch NOT IN ('Bcom','IT');
+
+
+Q17  find student details whose marks are between 60 and 90.
+
+
+select * from student where marks BETWEEN 60 AND 90;
+
+
+Q18  find student details whose marks are not between 50 and 60.
+
+
+select * from student where marks NOT BETWEEN 50 AND 60;
+
+
+Q19 find student name who is not allocated to any branch.
+
+
+select sname  from student where branch IS NULL;
+
+
+
+Q20 find faculty details whose starts with letter 'A'.
+
+
+select * from faculty where fname LIKE 'a%';
+
+
+
+
